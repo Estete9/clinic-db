@@ -15,8 +15,11 @@ CREATE TABLE medical_histories(
   patient_id      INT NOT NULL,
   status          VARCHAR(120) NOT NULL,
   PRIMARY KEY(id),
-  FOREIGN KEY(patient_id)
+  FOREIGN KEY(patient_id) REFERENCES patients(id)
 );
+
+-- Add non-clustered index to medical_histories' FK
+CREATE INDEX idx_patient_id ON medical_histories(patient_id);
 
 CREATE TABLE treatments(
   id              INT GENERATED ALWAYS AS IDENTITY,
@@ -34,4 +37,8 @@ CREATE TABLE treatment_records(
   FOREIGN KEY(treatment_id) REFERENCES treatments(id),
   FOREIGN KEY(medical_history_id) REFERENCES medical_histories(id)
 );
+
+-- Add non-clustered index to treatment_records' FKs
+CREATE INDEX idx_treatment_id ON treatment_records(treatment_id);
+CREATE INDEX idx_medical_history_id ON treatment_records(medical_history_id);
 
