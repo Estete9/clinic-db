@@ -66,7 +66,7 @@ To get a local copy up and running, follow these steps.
 
 To run this project you need:
 
-- PostgreSQL installed and running in your computer
+- PostgreSQL installed and running on your computer
 - psql installed in your environment
 - An empty database to use
 
@@ -80,7 +80,7 @@ Install psql and PostgreSQL
 
 
 ### Usage
-- Make sure all the commands in schema_based_on_diagram.sql ran without errors.
+- Make sure all the commands in schema_based_on_diagram.sql run without errors.
 - Run the queries necessary.
 
 
