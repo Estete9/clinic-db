@@ -49,9 +49,9 @@ CREATE TABLE invoices(
     generated_at        TIMESTAMP NOT NULL,
     payed_at            TIMESTAMP NOT NULL,
     medical_history_id  INT,
-    PRIMARY KEY(id, total_amount, generated_at, payed_at, medical_history_id),
+    PRIMARY KEY(id),
     FOREIGN KEY(medical_history_id) REFERENCES medical_histories(id)
-)
+);
 
 -- Adds a non-clustered index to invoices' FKs
 CREATE INDEX idx_medical_history_id ON invoices(medical_history_id);
@@ -64,10 +64,10 @@ CREATE TABLE invoice_items(
     total_price         DECIMAL,
     invoice_id          INT,
     treatment_id        INT,
-    PRIMARY KEY(id, unit_price, quantity, total_price, invoice_id, treatment_id),
+    PRIMARY KEY(id),
     FOREIGN KEY(invoice_id) REFERENCES invoices(id),
     FOREIGN KEY(treatment_id) REFERENCES treatments(id)
-)
+);
 -- Adds a non-clustered index to invoice_items' FKs
 CREATE INDEX idx_invoice_id ON invoice_items(invoice_id);
 CREATE INDEX idx_treatment_id ON invoice_items(treatment_id);
